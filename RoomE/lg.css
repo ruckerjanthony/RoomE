@@ -5,3 +5,11 @@ h1, h2, h3, h4, h5, h6 { font-family: Georgia, serif;
   body {
       background-color: lightblue;
   }
+
+  body {
+    color: gray;
+}
+
+h1 {
+    color: black;
+}
