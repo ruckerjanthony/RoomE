@@ -28,6 +28,14 @@ class PrefHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/start.html')
         self.response.out.write(template.render())
+        if user:
+            self.direct("/pref2")
+
+class PrefHandler2(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/start_2.html')
+        self.response.out.write(template.render())
+
 
 
 class MainPage(webapp2.RequestHandler):
@@ -35,14 +43,13 @@ class MainPage(webapp2.RequestHandler):
         user = users.get_current_user()
         if user:
 
-
             self.redirect("/home2")
-        elif:
+        else:
             greeting = ('<a href="%s">Sign in or Sign Up</a>.' %
             users.create_login_url('/'))
             self.response.out.write('<html><body>%s</body></html>' % greeting)
 
-        else
+
 
 
 
@@ -53,5 +60,5 @@ class MainPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/signup', SignupHandler),('/login', LoginHandler), ('/', HomeHandler),
-    ('/home', MainPage), ('/home2', Home2Handler), ("/pref", PrefHandler)
+    ('/home', MainPage), ("/pref", PrefHandler), ('/pref2', PrefHandler2)
 ], debug=True)
