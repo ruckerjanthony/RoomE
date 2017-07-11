@@ -1,24 +1,40 @@
 
   body {
-      background-color: lightblue;
+      background-color: brown;
   }
 
   body {
     color: gray;
+    font-size: 17px;
+    background-image: url("Roommates2.png");
+    background-repeat: no-repeat;
+    background-size: 1650px 798px
+}
+
+img {
+    display: block;
+    margin: bottom;
+    width: 80%;
 }
 
 h1 {
     color: black;
 }
 
+  h2 {
+    text-align: center;
+    font-size: 700%;
+}
+
+
 .signup {
-  font: bold 11px Arial;
-  text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
+  font: 10px Arial;
+  background-color: #000000;
+  color: #565656;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+  border-radius: 9px
 }
