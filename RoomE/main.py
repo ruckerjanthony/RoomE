@@ -24,13 +24,6 @@ class LoginHandler(webapp2.RequestHandler):
      template = jinja_environment.get_template('templates/login.html')
      self.response.out.write(template.render())
 
-class PrefHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('templates/start.html')
-        self.response.out.write(template.render())
-        if user:
-            self.direct("/pref2")
-
 class PrefHandler2(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/start_2.html')
@@ -49,6 +42,13 @@ class MainPage(webapp2.RequestHandler):
             users.create_login_url('/'))
             self.response.out.write('<html><body>%s</body></html>' % greeting)
 
+
+class PrefHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/start.html')
+        self.response.out.write(template.render())
+        if user:
+                self.direct("/pref2")
 
 
 
