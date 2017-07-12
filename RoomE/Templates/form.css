@@ -4,12 +4,16 @@ body {
 }
 h1 {
 font-family: courier new;
-font-size: 60px;
+font-size: 30px;
 border-bottom: solid 10px;
 margin-right: 650px;
 margin-left: 70px;
 }
 
+h4{
+font-family: courier new;
+font-size: 20px;
+}
 
 div {
 margin-left: 150px;
