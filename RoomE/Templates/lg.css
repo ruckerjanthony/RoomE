@@ -4,11 +4,12 @@
   }
 
   body {
-    color: gray;
-    font-size: 17px;
-    background-image: url("Roommates2.png");
+    font-family: "Arial", Times, sans-serif;
+    color: black;
+    font-size: 20px;
+    background-image: url("RoomE3.jpg");
     background-repeat: no-repeat;
-    background-size: 1650px 798px
+    background-size: 1620px 798px
 }
 
 img {
@@ -18,6 +19,7 @@ img {
 }
 
 h1 {
+    font-family: "Arial", Times, sans-serif;
     color: black;
 }
 
