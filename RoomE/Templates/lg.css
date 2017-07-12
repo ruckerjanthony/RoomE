@@ -1,15 +1,22 @@
 
-  body {
-      background-color: brown;
+  div{
+    border-style: solid;
+    border-color: #CCCCCC;
+    padding-left: 10px;
+    border-width: 10px;
+    border-radius: 20px;
+    background-color: #719B97;
   }
+
 
   body {
     font-family: "Arial", Times, sans-serif;
-    color: black;
+    color: #CCCCCC;
     font-size: 20px;
     background-image: url("RoomE3.jpg");
     background-repeat: no-repeat;
-    background-size: 1620px 798px
+    background-size: 1620px 798px;
+    background-color: brown;
 }
 
 img {
@@ -20,7 +27,8 @@ img {
 
 h1 {
     font-family: "Arial", Times, sans-serif;
-    color: black;
+    color: #CCCCCC;
+    margin-left:15px;
 }
 
   h2 {
@@ -31,12 +39,12 @@ h1 {
 
 .signup {
   font: 10px Arial;
-  background-color: #000000;
-  color: #565656;
+  background-color: #719B97;
+  color: #FFF4F4;
   padding: 2px 6px 2px 6px;
-  border-top: 1px solid #CCCCCC;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #CCCCCC;
+  border-top: 4px solid #CCCCCC;
+  border-right: 4px solid #CCCCCC;
+  border-bottom: 4px solid #CCCCCC;
+  border-left: 4px solid #CCCCCC;
   border-radius: 9px
 }
