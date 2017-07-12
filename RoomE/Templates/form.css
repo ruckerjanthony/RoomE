@@ -1,0 +1,31 @@
+
+h1 {
+font-family: courier new;
+font-size: 60px;
+border-bottom: solid 10px;
+margin-right: 650px;
+margin-left: 70px;
+}
+
+
+div {
+margin-left: 150px;
+font-family: verdana;
+font-size: 20px;
+}
+
+
+input {
+  border-color: black;
+  border-style: solid;
+}
+
+select {
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+}
+
+value {
+  font
+}
