@@ -2,37 +2,43 @@ import webapp2
 import jinja2
 import os
 from google.appengine.api import users
-google.appengine.ext import ndb
+from google.appengine.ext import ndb
 
 
 jinja_environment = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+    loader=jinja2.FileSystemLoader("templates"))
 
-class User:
-    User(ndb.Model):
-    Full Name = ndb.StringProperty()
+class Users (ndb.Model):
+    Full_Name= ndb.StringProperty()
     Email = ndb.StringProperty()
     Gender= ndb.StringProperty()
 
-class HomeHandler(webapp2.RequestHandler):
-    def get(self):
-     template = jinja_environment.get_template('templates/RoomE.html')
-     self.response.out.write(template.render())
 
 class SignupHandler(webapp2.RequestHandler):
     def get(self):
-     template = jinja_environment.get_template('templates/sign_up.html')
+     template = jinja_environment.get_template('sign_up.html')
      self.response.out.write(template.render())
+     user= Users()
+     user.Full_Name= self.request.get("name")
+     user.Email= self.request.get("email")
+     user.Gender= self.request.get("gender")
+     user.put()
+
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+     template = jinja_environment.get_template('RoomE.html')
+     self.response.out.write(template.render())
+
 
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
-     template = jinja_environment.get_template('templates/login.html')
+     template = jinja_environment.get_template('login.html')
      self.response.out.write(template.render())
 
 class PrefHandler2(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('templates/start_2.html')
+    def post(self):
+        template = jinja_environment.get_template('start_2.html')
         self.response.out.write(template.render())
 
 
@@ -50,11 +56,17 @@ class MainPage(webapp2.RequestHandler):
 
 
 class PrefHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('templates/start.html')
+    def post(self):
+        template = jinja_environment.get_template('start.html')
         self.response.out.write(template.render())
-        if user:
-                self.direct("/pref2")
+        user= Users()
+        user.Full_Name= self.request.get("name")
+        user.Email= self.request.get("email")
+        user.Gender= self.request.get("gender")
+        user.put()
+
+
+
 
 
 
@@ -66,5 +78,5 @@ class PrefHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/signup', SignupHandler),('/login', LoginHandler), ('/', HomeHandler),
-    ('/home', MainPage), ("/pref", PrefHandler), ('/pref2', PrefHandler2)
+    ('/home', MainPage), ("/pref", PrefHandler), ('/pref2', PrefHandler2), ("/data", Users)
 ], debug=True)
