@@ -62,7 +62,8 @@ class LoginHandler(webapp2.RequestHandler):
             self.redirect("/profile")
 
         else:
-
+            #username('')
+            #self.response(Enter)
             self.response.write("Unrecognized Username")
 
 
