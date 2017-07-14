@@ -2,6 +2,8 @@ import webapp2
 import jinja2
 import os
 from google.appengine.ext import ndb
+import logging
+
 
 
 jinja_environment = jinja2.Environment(
@@ -14,13 +16,22 @@ class User (ndb.Model):
 
 class SignupHandler(webapp2.RequestHandler):
     def get(self):
-     template = jinja_environment.get_template('sign_up.html')
-     self.response.out.write(template.render())
+
+     logging.info(self.request.get("Username"))
      user= User()
      user.Full_Name= self.request.get("name")
      user.Username= self.request.get("Username")
      user.Gender= self.request.get("gender")
+
      user.put()
+
+     self.response.set_cookie('get_username', user.Username, max_age=360,
+     path='/')
+
+     template = jinja_environment.get_template('sign_up.html')
+     self.response.write(template.render())
+
+     logging.info(user.Username)
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
@@ -31,17 +42,17 @@ class HomeHandler(webapp2.RequestHandler):
 class Preferences(ndb.Model):
 
      username=ndb.StringProperty()
-     smoke= ndb.BooleanProperty()
-     late_riser= ndb.BooleanProperty()
-     snore= ndb.BooleanProperty()
-     activity_level= ndb.StringProperty()
-     sexuality= ndb.StringProperty()
-     religion= ndb.StringProperty()
-     religion_imp= ndb.StringProperty()
-     origin= ndb.StringProperty()
-     working= ndb.BooleanProperty()
-     major= ndb.StringProperty()
-     organization= ndb.StringProperty()
+     smoke=ndb.BooleanProperty()
+     late_riser=ndb.BooleanProperty()
+     snore=ndb.BooleanProperty()
+     activity_level=ndb.StringProperty()
+     sexuality=ndb.StringProperty()
+     religion=ndb.StringProperty()
+     religion_imp=ndb.StringProperty()
+     origin=ndb.StringProperty()
+     working=ndb.BooleanProperty()
+     major=ndb.StringProperty()
+     organization=ndb.StringProperty()
      social_level=ndb.StringProperty()
      hobbies=ndb.StringProperty()
 
@@ -99,20 +110,16 @@ class PrefHandler2(webapp2.RequestHandler):
             #Ask Josh about fixing this so that this data can actually be read
             #setattr(User_Preferences, trait, valid)
 
-
-        User_Preferences.username=self.request.get("username")
+        User_Preferences.username=self.request.cookies.get('get_username')  #not working
+        #User_Preferences.username=self.request.get("username")
         User_Preferences.activity_level=self.request.get("activity_level")
         User_Preferences.sexuality=self.request.get("sexuality")
-        User_Preferences.religion= self.request.get("religion")
-        User_Preferences.religion_imp= self.request.get("religion_imp")
-        User_Preferences.origin= self.request.get("origin")
-        #User_Preferences.working= self.request.get("working")
+        User_Preferences.religion= self.request.get("religion")            #not working
+        User_Preferences.religion_imp= self.request.get("religion_imp")    #not working
+        #User_Preferences.working= self.request.get("working") #returns an error in the code(says "NONE in the database")
         User_Preferences.major= self.request.get("major")
-        User_Preferences.organization= self.request.get("organization")
-        User_Preferences.social_level= self.request.get("social_level")
-        User_Preferences.hobbies=self.request.get("hobbies")
-
         User_Preferences.put()
+        logging.info(User_Preferences)
 
 
 
@@ -141,7 +148,29 @@ class PrefHandler(webapp2.RequestHandler):
         user.Full_Name= self.request.get("name")
         user.Username= self.request.get("Username")
         user.Gender= self.request.get("gender")
+
+        self.response.set_cookie('get_username', user.Username, max_age=360,
+         path='/')
         user.put()
+class PrefHandler3(webapp2.RequestHandler):
+        def post(self):
+
+            User_Preferences= Preferences()
+            User_Preferences.origin= self.request.get("origin")
+            User_Preferences.organization= self.request.get("organization")
+            User_Preferences.social_level= self.request.get("social_level")
+            User_Preferences.hobbies=self.request.get("hobbies")
+            User_Preferences.put()
+
+
+            self.response.write("orgin")
+            self.response.write("organization")
+            self.response.write("social_level")
+            self.response.write("hobbies")
+
+            template = jinja_environment.get_template('/start_2.html')
+            self.response.out.write(template.render())
+
 
 
 class ProfileHandler(webapp2.RequestHandler):
