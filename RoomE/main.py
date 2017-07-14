@@ -38,6 +38,13 @@ class Preferences(ndb.Model):
      sexuality= ndb.StringProperty()
      religion= ndb.StringProperty()
      religion_imp= ndb.StringProperty()
+     origin= ndb.StringProperty()
+     working= ndb.BooleanProperty()
+     major= ndb.StringProperty()
+     organization= ndb.StringProperty()
+     social_level=ndb.StringProperty()
+     hobbies=ndb.StringProperty()
+
 
 class LoginHandler(webapp2.RequestHandler):
     def get(self):
@@ -62,8 +69,7 @@ class LoginHandler(webapp2.RequestHandler):
             self.redirect("/profile")
 
         else:
-            #username('')
-            #self.response(Enter)
+
             self.response.write("Unrecognized Username")
 
 
@@ -82,7 +88,7 @@ class PrefHandler2(webapp2.RequestHandler):
 
 
 
-        for trait in traits:
+        #for trait in traits:
 
             Traits=[ "Extrovert", "Introvert", "Agreeable", "Sarcastic""Confident",
             "Colorful", "Curteous", "Disciplined", "Honest", "Humble", "Neat", "Genuine",
@@ -90,7 +96,8 @@ class PrefHandler2(webapp2.RequestHandler):
             "Logistical", "Systematic", "Stoic", "Trusting", "Realistic", "Sophisticated",
             "Practical", "Loyal", "Independent", "Decisive"]
 
-            setattr(User_Preferences, trait, valid)
+            #Ask Josh about fixing this so that this data can actually be read
+            #setattr(User_Preferences, trait, valid)
 
 
         User_Preferences.username=self.request.get("username")
@@ -98,6 +105,13 @@ class PrefHandler2(webapp2.RequestHandler):
         User_Preferences.sexuality=self.request.get("sexuality")
         User_Preferences.religion= self.request.get("religion")
         User_Preferences.religion_imp= self.request.get("religion_imp")
+        User_Preferences.origin= self.request.get("origin")
+        #User_Preferences.working= self.request.get("working")
+        User_Preferences.major= self.request.get("major")
+        User_Preferences.organization= self.request.get("organization")
+        User_Preferences.social_level= self.request.get("social_level")
+        User_Preferences.hobbies=self.request.get("hobbies")
+
         User_Preferences.put()
 
 
