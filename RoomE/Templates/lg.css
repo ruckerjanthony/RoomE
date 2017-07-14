@@ -1,0 +1,50 @@
+
+  div{
+    border-style: solid;
+    border-color: #CCCCCC;
+    padding-left: 10px;
+    border-width: 10px;
+    border-radius: 20px;
+    background-color: #719B97;
+  }
+
+
+  body {
+    font-family: "Arial", Times, sans-serif;
+    color: #CCCCCC;
+    font-size: 20px;
+    background-image: url("RoomE3.jpg");
+    background-repeat: no-repeat;
+    background-size: 1620px 798px;
+    background-color: brown;
+}
+
+img {
+    display: block;
+    margin: bottom;
+    width: 80%;
+}
+
+h1 {
+    font-family: "Arial", Times, sans-serif;
+    color: #CCCCCC;
+    margin-left:15px;
+}
+
+  h2 {
+    text-align: center;
+    font-size: 700%;
+}
+
+
+.signup {
+  font: 10px Arial;
+  background-color: #719B97;
+  color: #FFF4F4;
+  padding: 2px 6px 2px 6px;
+  border-top: 4px solid #CCCCCC;
+  border-right: 4px solid #CCCCCC;
+  border-bottom: 4px solid #CCCCCC;
+  border-left: 4px solid #CCCCCC;
+  border-radius: 9px
+}
