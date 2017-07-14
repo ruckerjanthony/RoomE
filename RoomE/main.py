@@ -33,7 +33,7 @@ class Preferences(ndb.Model):
      username=ndb.StringProperty()
      smoke= ndb.BooleanProperty()
      late_riser= ndb.BooleanProperty()
-     snore=ndb.BooleanProperty()
+     snore= ndb.BooleanProperty()
      activity_level= ndb.StringProperty()
      sexuality= ndb.StringProperty()
      religion= ndb.StringProperty()
@@ -79,7 +79,17 @@ class PrefHandler2(webapp2.RequestHandler):
             valid= self.request.get(field)=="yes"
             setattr(User_Preferences, field, valid)
 
-            Traits=[ ]
+
+
+        for trait in traits:
+
+            Traits=[ "Extrovert", "Introvert", "Agreeable", "Sarcastic""Confident",
+            "Colorful", "Curteous", "Disciplined", "Honest", "Humble", "Neat", "Genuine",
+            "Playful", "Peaceful", "Precise", "Rational", "Resourceful", "Prepared",
+            "Logistical", "Systematic", "Stoic", "Trusting", "Realistic", "Sophisticated",
+            "Practical", "Loyal", "Independent", "Decisive"]
+
+            setattr(User_Preferences, trait, valid)
 
 
         User_Preferences.username=self.request.get("username")
